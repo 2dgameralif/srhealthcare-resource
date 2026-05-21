@@ -2,7 +2,7 @@
     "version": 1,
     "lastUpdated": "2026-05-21",
     "domains": [
-        "www.invoice.com",
+        "http://localhost:3000/",
         "invoice.com",
         "localhost",
         "127.0.0.1",
