@@ -827,12 +827,21 @@
             const response = await fetch(`${LICENSE_URL}?v=${Date.now()}`);
             if (!response.ok) return;
             const text = await response.text();
-            const allowedUrls = text.split('\n').map(u => u.trim()).filter(u => u.length > 0);
-            const currentUrl = window.location.href;
             
-            // Check for exact match or domain match
+            // Normalize current URL: decode %20, lowercase, and remove trailing slashes
+            const currentUrl = decodeURI(window.location.href).toLowerCase().replace(/\/+$/, "");
+            
+            const allowedUrls = text.split('\n')
+                .map(u => decodeURI(u.trim()).toLowerCase().replace(/\/+$/, ""))
+                .filter(u => u.length > 0);
+            
+            // Check if current URL starts with any allowed URL
             window.LICENSE_OK = allowedUrls.some(allowed => currentUrl.startsWith(allowed));
-            if (!window.LICENSE_OK) console.error("Unauthorized Runtime Environment Detected.");
+            
+            if (!window.LICENSE_OK) {
+                console.warn("Current URL:", currentUrl);
+                console.warn("Allowed URLs:", allowedUrls);
+            }
         } catch (e) {
             console.error("License validation failed:", e);
         }
