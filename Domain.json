@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "lastUpdated": "2026-05-21",
+    "domains": [
+        "www.invoice.com",
+        "invoice.com",
+        "localhost",
+        "127.0.0.1",
+        "your-other-domain.com"
+    ],
+    "emergencyDisable": false
+}
