@@ -1,1 +1,1 @@
-https://gex-corporation.github.io/Sr-Health-Care-Invoice-App/
+https://srhealthcare-invoice.netlify.app/
